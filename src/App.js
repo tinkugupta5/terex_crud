@@ -38,6 +38,7 @@ const Example = () => {
 
   const [phoneNumber, setPhoneNumber] = useState();
   const [phoneNumber1, setPhoneNumber1] = useState();
+  const [validation, setValidation] = useState();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -111,6 +112,21 @@ const Example = () => {
           defaultCountry={country}
         />
       </div>
+
+      {validation ? (
+        <div className="alert alert-danger" role="alert">
+          {validation}
+        </div>
+      ) : (
+        <button
+          variant="primary"
+          // value={state.Start_National_Number}
+          // onChange={handleChange}
+          type="submit"
+        >
+          Add Range
+        </button>
+      )}
 
       <button type="submit">Submit</button>
     </form>
