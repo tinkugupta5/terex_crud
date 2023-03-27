@@ -57,9 +57,15 @@ const Example = () => {
         const response = await axios.post("https://example.com/api/submit", {
           country: country,
           countryCode: `+${phoneNumberObj.countryCallingCode}`,
-          phoneNumber: phoneNumberObj.nationalNumber.toString(),
-          phoneNumber1: phoneNumber1,
+          phoneNumber: phoneNumberObj.nationalNumber
+            .toString()
+            .replace("+", ""),
+          phoneNumber1: phoneNumber1.replace("+", ""),
         });
+
+        console.log("Country after api:", country);
+        console.log("Phone Number after api:", phoneNumber);
+        console.log("First Name after api:", phoneNumber1);
 
         console.log(response.data);
       } else {
